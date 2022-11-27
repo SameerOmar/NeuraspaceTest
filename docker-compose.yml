@@ -1,0 +1,26 @@
+version: '3.4'
+
+services:
+  neuraspacetest:
+    image: ${DOCKER_REGISTRY-}neuraspacetest
+    build:
+      context: .
+      dockerfile: NeuraspaceTest/Dockerfile
+    depends_on: 
+      - postgresserver
+  #DataBase Service
+  postgresserver:
+    #Pull the latest postgres image
+    image: postgres
+    #Map port 5432 on the postgres container to port 5432 in the host
+    ports:
+      - "5432:5432"
+    #Specify where the persisted Data should be stored
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    restart: always
+    #Specify Environment Variables for postgres
+    environment: 
+      - POSTGRES_DB=NeuraspaceTestDb
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=password
