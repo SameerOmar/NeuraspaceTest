@@ -6,11 +6,12 @@
 // -----------------------------------------------------------------------
 
 using AutoMapper;
+using Microsoft.Extensions.Logging;
 using NeuraspaceTest.Contracts;
 using NeuraspaceTest.Contracts.Services;
 using NeuraspaceTest.DataAccess;
-using NeuraspaceTest.DataTransferModels;
 using NeuraspaceTest.Models;
+using NeuraspaceTest.Models.DataTransferModels;
 
 namespace NeuraspaceTest.Services
 {
@@ -41,7 +42,7 @@ namespace NeuraspaceTest.Services
         public bool ValidateMessage(IServiceResponse<CollisionEventData> response, CollisionEvent message,
             string operatorId)
         {
-            if (message.Operator.OperatorId == operatorId)
+            if (!message.Operator.OperatorId.Equals(operatorId, StringComparison.OrdinalIgnoreCase))
             {
                 response.Success = false;
                 response.Message = "Message not belong to the operator";
@@ -49,7 +50,7 @@ namespace NeuraspaceTest.Services
                 return false;
             }
 
-            if (message.CollisionDate <= DateTime.Now)
+            if (message.CollisionDate <= DateTime.Now.ToUniversalTime())
             {
                 response.Success = false;
                 response.Message = "Message in the past";
@@ -108,7 +109,7 @@ namespace NeuraspaceTest.Services
         /// <param name="operatorId">The operator identifier.</param>
         /// <param name="all"></param>
         /// <returns></returns>
-        public async Task<IServiceResponse<List<CollisionEventData>>> GetCollisionEventWarnings(string operatorId,
+        public IServiceResponse<List<CollisionEventData>> GetCollisionEventWarnings(string operatorId,
             bool all = false)
         {
             var response = new ServiceResponse<List<CollisionEventData>>();

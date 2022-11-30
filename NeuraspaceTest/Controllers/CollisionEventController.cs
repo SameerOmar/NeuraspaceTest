@@ -7,8 +7,8 @@
 
 using Microsoft.AspNetCore.Mvc;
 using NeuraspaceTest.Contracts.Services;
-using NeuraspaceTest.DataTransferModels;
 using NeuraspaceTest.Models;
+using NeuraspaceTest.Models.DataTransferModels;
 
 namespace NeuraspaceTest.Controllers
 {
@@ -61,7 +61,7 @@ namespace NeuraspaceTest.Controllers
         /// <param name="all"></param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<CollisionEventData>>> GetCollisionEvents(bool all = false)
+        public ActionResult<IEnumerable<CollisionEventData>> GetCollisionEvents(bool all = false)
         {
             if (!ValidateOperatorHeader())
             {
@@ -72,10 +72,10 @@ namespace NeuraspaceTest.Controllers
 
             if (all)
             {
-                return await GetEntitiesAsync(query => query.Operator.OperatorId == operatorId);
+                return GetEntities(query => query.Operator.OperatorId == operatorId);
             }
 
-            return await GetEntitiesAsync(query =>
+            return GetEntities(query =>
                 query.Operator.OperatorId == operatorId && query.CollisionDate >= DateTime.Now.ToUniversalTime());
         }
 
@@ -85,7 +85,7 @@ namespace NeuraspaceTest.Controllers
         /// <param name="all"></param>
         /// <returns></returns>
         [HttpGet("Warnings")]
-        public async Task<ActionResult<IEnumerable<CollisionEventData>>> GetCollisionEventWarnings(bool all = false)
+        public ActionResult<IEnumerable<CollisionEventData>> GetCollisionEventWarnings(bool all = false)
         {
             if (!ValidateOperatorHeader())
             {
@@ -93,7 +93,7 @@ namespace NeuraspaceTest.Controllers
             }
 
             var operatorId = Request.Headers["operator_id"].FirstOrDefault();
-            var result = await _collisionEventService.GetCollisionEventWarnings(operatorId, all);
+            var result = _collisionEventService.GetCollisionEventWarnings(operatorId, all);
 
             if (result.Success)
             {

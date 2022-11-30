@@ -6,11 +6,12 @@
 // -----------------------------------------------------------------------
 
 using AutoMapper;
+using Microsoft.Extensions.Logging;
 using NeuraspaceTest.Contracts;
 using NeuraspaceTest.Contracts.Services;
 using NeuraspaceTest.DataAccess;
-using NeuraspaceTest.DataTransferModels;
 using NeuraspaceTest.Models;
+using NeuraspaceTest.Models.DataTransferModels;
 
 namespace NeuraspaceTest.Services
 {

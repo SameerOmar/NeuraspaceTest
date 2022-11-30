@@ -13,6 +13,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NeuraspaceTest.DataAccess",
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{BFEEBCB3-1BEC-4334-85B0-886D2AAE6D58}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{5BDFCA20-E571-4410-97C7-F1BABD1C5D6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuraspaceTest.Services", "NeuraspaceTest.Services\NeuraspaceTest.Services.csproj", "{5393B4FE-D792-43D5-90D5-5AB9CD5143F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{BFEEBCB3-1BEC-4334-85B0-886D2AAE6D58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BFEEBCB3-1BEC-4334-85B0-886D2AAE6D58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BFEEBCB3-1BEC-4334-85B0-886D2AAE6D58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BDFCA20-E571-4410-97C7-F1BABD1C5D6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BDFCA20-E571-4410-97C7-F1BABD1C5D6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BDFCA20-E571-4410-97C7-F1BABD1C5D6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BDFCA20-E571-4410-97C7-F1BABD1C5D6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5393B4FE-D792-43D5-90D5-5AB9CD5143F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5393B4FE-D792-43D5-90D5-5AB9CD5143F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5393B4FE-D792-43D5-90D5-5AB9CD5143F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5393B4FE-D792-43D5-90D5-5AB9CD5143F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

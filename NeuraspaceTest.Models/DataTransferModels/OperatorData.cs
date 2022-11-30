@@ -8,7 +8,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace NeuraspaceTest.DataTransferModels
+namespace NeuraspaceTest.Models.DataTransferModels
 {
     /// <summary>
     ///     Operator request

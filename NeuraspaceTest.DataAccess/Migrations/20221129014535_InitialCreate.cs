@@ -33,8 +33,8 @@ namespace NeuraspaceTest.DataAccess.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     satellitename = table.Column<string>(name: "satellite_name", type: "text", nullable: false),
-                    satelliteid = table.Column<string>(name: "satellite_id", type: "text", nullable: false),
-                    operatorid = table.Column<int>(name: "operator_id", type: "integer", nullable: false)
+                    operatorid = table.Column<int>(name: "operator_id", type: "integer", nullable: false),
+                    satelliteid = table.Column<string>(name: "satellite_id", type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -59,7 +59,7 @@ namespace NeuraspaceTest.DataAccess.Migrations
                     eventid = table.Column<string>(name: "event_id", type: "text", nullable: false),
                     messageid = table.Column<string>(name: "message_id", type: "text", nullable: false),
                     operatorid = table.Column<int>(name: "operator_id", type: "integer", nullable: false),
-                    probabilityofcollision = table.Column<decimal>(name: "probability_of_collision", type: "numeric", nullable: false),
+                    probabilityofcollision = table.Column<double>(name: "probability_of_collision", type: "double precision", nullable: false),
                     satelliteid = table.Column<int>(name: "satellite_id", type: "integer", nullable: false)
                 },
                 constraints: table =>
@@ -80,6 +80,12 @@ namespace NeuraspaceTest.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_CollisionEvents_message_id",
+                table: "CollisionEvents",
+                column: "message_id",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_CollisionEvents_operator_id",
                 table: "CollisionEvents",
                 column: "operator_id");
@@ -92,7 +98,8 @@ namespace NeuraspaceTest.DataAccess.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Operators_operator_id",
                 table: "Operators",
-                column: "operator_id");
+                column: "operator_id",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Satellites_operator_id",
@@ -102,7 +109,8 @@ namespace NeuraspaceTest.DataAccess.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Satellites_satellite_id",
                 table: "Satellites",
-                column: "satellite_id");
+                column: "satellite_id",
+                unique: true);
         }
 
         /// <inheritdoc />

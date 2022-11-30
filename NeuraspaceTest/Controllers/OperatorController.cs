@@ -7,8 +7,8 @@
 
 using Microsoft.AspNetCore.Mvc;
 using NeuraspaceTest.Contracts.Services;
-using NeuraspaceTest.DataTransferModels;
 using NeuraspaceTest.Models;
+using NeuraspaceTest.Models.DataTransferModels;
 
 namespace NeuraspaceTest.Controllers
 {
@@ -45,9 +45,9 @@ namespace NeuraspaceTest.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<OperatorData>>> GetOperators()
+        public ActionResult<IEnumerable<OperatorData>> GetOperators()
         {
-            return await GetEntitiesAsync();
+            return GetEntities();
         }
 
         /// <summary>

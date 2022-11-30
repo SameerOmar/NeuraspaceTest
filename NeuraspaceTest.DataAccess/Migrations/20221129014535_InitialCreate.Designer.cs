@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace NeuraspaceTest.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20221127023637_InitialCreate")]
+    [Migration("20221129014535_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -21,6 +21,9 @@ namespace NeuraspaceTest.DataAccess.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.0")
+                .HasAnnotation("Proxies:ChangeTracking", false)
+                .HasAnnotation("Proxies:CheckEquality", false)
+                .HasAnnotation("Proxies:LazyLoading", true)
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -55,8 +58,8 @@ namespace NeuraspaceTest.DataAccess.Migrations
                         .HasColumnType("text")
                         .HasColumnName("message_id");
 
-                    b.Property<decimal>("ProbabilityOfCollision")
-                        .HasColumnType("numeric")
+                    b.Property<double>("ProbabilityOfCollision")
+                        .HasColumnType("double precision")
                         .HasColumnName("probability_of_collision");
 
                     b.Property<int>("operator_id")
@@ -66,6 +69,9 @@ namespace NeuraspaceTest.DataAccess.Migrations
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("MessageId")
+                        .IsUnique();
 
                     b.HasIndex("operator_id");
 
@@ -94,7 +100,8 @@ namespace NeuraspaceTest.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OperatorId");
+                    b.HasIndex("OperatorId")
+                        .IsUnique();
 
                     b.ToTable("Operators");
                 });
@@ -122,7 +129,8 @@ namespace NeuraspaceTest.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("SatelliteId");
+                    b.HasIndex("SatelliteId")
+                        .IsUnique();
 
                     b.HasIndex("operator_id");
 

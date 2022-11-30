@@ -25,6 +25,6 @@ namespace NeuraspaceTest.Contracts.Services
         /// <param name="operatorId">The operator identifier.</param>
         /// <param name="all">if set to true will retrieve all the warnings.</param>
         /// <returns></returns>
-        Task<IServiceResponse<List<TRequest>>> GetCollisionEventWarnings(string operatorId, bool all);
+        IServiceResponse<List<TRequest>> GetCollisionEventWarnings(string operatorId, bool all);
     }
 }

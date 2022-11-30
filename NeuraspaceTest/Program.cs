@@ -11,9 +11,9 @@ using Microsoft.OpenApi.Models;
 using NeuraspaceTest;
 using NeuraspaceTest.Contracts.Services;
 using NeuraspaceTest.DataAccess;
-using NeuraspaceTest.DataTransferModels;
 using NeuraspaceTest.Helper;
 using NeuraspaceTest.Models;
+using NeuraspaceTest.Models.DataTransferModels;
 using NeuraspaceTest.Services;
 using Serilog;
 
@@ -47,7 +47,8 @@ builder.Logging.AddSerilog(logger);
 
 // Register Services
 builder.Services.AddDbContext<AppDbContext>(option =>
-    option.UseNpgsql("name=ConnectionStrings:DbContext"));
+    option.UseNpgsql("name=ConnectionStrings:DbContext",
+        o => o.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery)));
 
 builder.Services.AddScoped<ICollisionEventService<CollisionEventData, CollisionEvent>, CollisionEventService>();
 builder.Services.AddScoped<IOperatorService<OperatorData, Operator>, OperatorService>();

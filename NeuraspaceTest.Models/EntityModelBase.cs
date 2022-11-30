@@ -10,7 +10,7 @@ using System.Text.Json.Serialization;
 
 namespace NeuraspaceTest.Models
 {
-    public class EntityModelBase
+    public abstract class EntityModelBase
     {
         /// <summary>
         ///     Gets or sets the identifier.

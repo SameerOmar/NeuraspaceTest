@@ -17,7 +17,7 @@ namespace NeuraspaceTest.Controllers
     /// <typeparam name="TRequest">The type of the request.</typeparam>
     /// <typeparam name="TEntity">The type of the entity.</typeparam>
     /// <seealso cref="Microsoft.AspNetCore.Mvc.ControllerBase" />
-    public class EntityControllerBase<TRequest, TEntity> : ControllerBase
+    public abstract class EntityControllerBase<TRequest, TEntity> : ControllerBase
         where TRequest : class
         where TEntity : class
     {
@@ -45,7 +45,7 @@ namespace NeuraspaceTest.Controllers
         /// </summary>
         /// <param name="logger">The logger.</param>
         /// <param name="entityService">The entity service.</param>
-        public EntityControllerBase(ILogger logger,
+        protected EntityControllerBase(ILogger logger,
             IEntityServiceBase<TRequest, TEntity> entityService)
         {
             Logger = logger;
@@ -101,7 +101,7 @@ namespace NeuraspaceTest.Controllers
         /// <returns></returns>
         [ApiExplorerSettings(IgnoreApi = true)]
         [NonAction]
-        public async Task<ActionResult<IEnumerable<TRequest>>> GetEntitiesAsync(Func<TEntity, bool> query = null)
+        public ActionResult<IEnumerable<TRequest>> GetEntities(Func<TEntity, bool> query = null)
         {
             var response = EntityService.GetList(query);
 

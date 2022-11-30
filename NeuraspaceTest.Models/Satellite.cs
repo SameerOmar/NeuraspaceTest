@@ -11,7 +11,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace NeuraspaceTest.Models
 {
-    [Index(nameof(SatelliteId))]
+    [Index(nameof(SatelliteId), IsUnique = true)]
+    [Index("operator_id")]
     public class Satellite : EntityModelBase
     {
         public virtual List<CollisionEvent> CollisionEvents { get; set; }

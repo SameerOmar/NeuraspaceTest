@@ -6,6 +6,7 @@
 // -----------------------------------------------------------------------
 
 using AutoMapper;
+using Microsoft.Extensions.Logging;
 using NeuraspaceTest.Contracts;
 using NeuraspaceTest.Contracts.Services;
 using NeuraspaceTest.DataAccess;
@@ -40,13 +41,39 @@ namespace NeuraspaceTest.Services
         /// </summary>
         protected readonly IMapper Mapper;
 
-
+        /// <summary>
+        ///     The not found constant string.
+        /// </summary>
         protected const string NotFound = "Not found";
+
+        /// <summary>
+        ///     The nothing to add constant string.
+        /// </summary>
         protected const string NothingToAdd = "Nothing to add";
+
+        /// <summary>
+        ///     The nothing to delete constant string.
+        /// </summary>
         protected const string NothingToDelete = "Nothing to delete";
+
+        /// <summary>
+        ///     The nothing to get constant string.
+        /// </summary>
         protected const string NothingToGet = "Nothing to get";
+
+        /// <summary>
+        ///     The nothing to modify constant string.
+        /// </summary>
         protected const string NothingToModify = "Nothing to modify";
+
+        /// <summary>
+        ///     The not updateable constant string.
+        /// </summary>
         protected const string NotUpdateable = "Not updateable";
+
+        /// <summary>
+        ///     The record not added constant string.
+        /// </summary>
         protected const string RecordNotAdded = "Record not added";
 
         #endregion

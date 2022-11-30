@@ -6,8 +6,8 @@
 // -----------------------------------------------------------------------
 
 using AutoMapper;
-using NeuraspaceTest.DataTransferModels;
 using NeuraspaceTest.Models;
+using NeuraspaceTest.Models.DataTransferModels;
 
 namespace NeuraspaceTest
 {

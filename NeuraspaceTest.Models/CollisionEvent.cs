@@ -7,9 +7,13 @@
 
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace NeuraspaceTest.Models
 {
+    [Index(nameof(MessageId), IsUnique = true)]
+    [Index("operator_id")]
+    [Index("satellite_id")]
     public class CollisionEvent : EntityModelBase
     {
         public bool Canceled { get; set; }

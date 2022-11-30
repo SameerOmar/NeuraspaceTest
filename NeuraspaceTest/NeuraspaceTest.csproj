@@ -28,6 +28,7 @@
 		<ProjectReference Include="..\NeuraspaceTest.Contracts\NeuraspaceTest.Contracts.csproj" />
 		<ProjectReference Include="..\NeuraspaceTest.DataAccess\NeuraspaceTest.DataAccess.csproj" />
 		<ProjectReference Include="..\NeuraspaceTest.Models\NeuraspaceTest.Models.csproj" />
+		<ProjectReference Include="..\NeuraspaceTest.Services\NeuraspaceTest.Services.csproj" />
 	</ItemGroup>
 
 </Project>

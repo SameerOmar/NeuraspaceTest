@@ -15,14 +15,36 @@ namespace NeuraspaceTest.DataAccess
         /// <summary>
         ///     Initializes a new instance of the <see cref="AppDbContext" /> class.
         /// </summary>
+        /// <remarks>
+        ///     See <see href="https://aka.ms/efcore-docs-dbcontext">DbContext lifetime, configuration, and initialization</see>
+        ///     for more information and examples.
+        /// </remarks>
+        public AppDbContext()
+        {
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="AppDbContext" /> class.
+        /// </summary>
         /// <param name="options">The options.</param>
         public AppDbContext(DbContextOptions<AppDbContext> options)
             : base(options)
         {
         }
 
+        /// <summary>
+        ///     Gets or sets the collision events.
+        /// </summary>
         public DbSet<CollisionEvent> CollisionEvents { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the operators.
+        /// </summary>
         public DbSet<Operator> Operators { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the satellites.
+        /// </summary>
         public DbSet<Satellite> Satellites { get; set; }
 
         /// <summary>
@@ -54,7 +76,8 @@ namespace NeuraspaceTest.DataAccess
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseNpgsql("Server=localhost; Database=Exceryasla; Username=root; Password=password");
+                optionsBuilder.UseNpgsql("Server=localhost; Database=Exceryasla; Username=root; Password=password",
+                    o => o.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery));
             }
 
             optionsBuilder.UseLazyLoadingProxies();
